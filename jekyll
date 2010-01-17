@@ -1,7 +1,10 @@
 #!/usr/bin/env ruby
 
-# $:.unshift File.join(File.dirname(__FILE__), *%w[.. lib])
-$:.unshift File.join('~', 'Projects', 'Ruby', 'jekyll_ext', 'lib')
+JEKYLL_LIB = '~/.gem/ruby/1.8/gems/jekyll-0.5.7/lib'
+JEKYLL_EXT = '~/Projects/Ruby/jekyll_ext'
+
+$:.unshift JEKYLL_LIB
+$:.unshift JEKYLL_EXT
 
 help = <<HELP
 Jekyll is a blog-aware, static site generator.
@@ -91,7 +94,7 @@ options = Jekyll.configuration(options)
 source      = options['source']
 destination = options['destination']
 
-require File.join(File.dirname(__FILE__), 'extensions.rb')
+require 'extensions'
 load_jekyll_extensions(source)
 
 # Files to watch
