@@ -1,4 +1,4 @@
-require File.join(File.dirname(__FILE__), 'aop')
+require File.join(File.dirname(__FILE__), '..', 'aop', 'aop.rb')
 require 'stringio'
 
 def catch_output
@@ -131,9 +131,13 @@ describe AOP do
     
     it "must return 'diet' when aborted" do
       AOP.around(GuineaPig, :eat) do |instance, args, proceed, abort|
-        abort.call("diet")
         proceed.call
       end
+      
+      AOP.around(GuineaPig, :eat) do |instance, args, proceed, abort|
+        abort.call("diet")
+        proceed.call        
+      end      
       
       GuineaPig.new.eat.should == "diet"
     end
