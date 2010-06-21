@@ -12,8 +12,8 @@ module Jekyll
   class << self
     alias_method :configuration_without_extensions, :configuration
     def configuration_with_extensions(options)
-      options = configuration_without_extensions(options)
-      Dir["_extensions/*.rb", "_extensions/*/*.rb"].each do |f|
+      options = configuration_without_extensions(options)      
+      Dir[File.join(options['source'], "_extensions", "*.rb"), File.join(options['source'], "_extensions", "*", "*.rb")].each do |f|
         puts "Loading Extension: #{File.basename(f)}"
         load f
       end
