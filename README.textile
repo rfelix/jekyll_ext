@@ -7,18 +7,10 @@ More information can be found here: "Jekyll Extensions -= Pain":http://rfelix.co
 
 h2. Installation
 
-(This was extracted from the blog post "Jekyll Extensions -= Pain":http://rfelix.com/2010/01/19/jekyll-extensions-minus-equal-pain/)
+<code>gem install jekyll_ext</code>
 
-# Grab the "jekyll_ext":http://github.com/rfelix/jekyll_ext code from GitHub:
-  <code>git clone git://github.com/rfelix/jekyll_ext.git</code>
-# Locate the _lib_ directory in the Jekyll gem installation.
-  <code>which jekyll</code> should give you the path to the executable.
-  In my case, it displayed <code>/Users/rfelix/.gem/ruby/1.8/bin/jekyll</code>, therefore the _lib_ directory is located at <code>/Users/rfelix/.gem/ruby/1.8/gems/jekyll-0.5.7/lib/</code>
-# Open up the _jekyll_ file in the _jekyll_ext_ directory and edit the constants <code>JEKYLL_LIB</code> and <code>JEKYLL_EXT</code> to contain the paths to the Jekyll gem _lib_ dir and the _jekyll_ext_ dir, respectively.
-# Now you have two options: 
-** *symlink the _jekyll_ script* to a path in your PATH environment, but make sure that the path is consulted before the Ruby gems path. You can confirm the right _jekyll_ is being used by issuing <code>jekyll --version</code> which should give you: <code>Jekyll (extended) 0.5.7</code>
-** Or, *replace the _jekyll_ file in the Ruby gems directory* (that you obtained from step 2) with a symlink to the file in <code>jekyll_ext/jekyll</code>.
+Now you just need to create the directory <em>_extensions</em> in your blog where all your extensions will live. Any <em>.rb</em> file in that directory or subdirectory will automatically be loaded by <em>jekyll_ext</em>.
 
-Now you just need to create the directory <em>_extensions/</em> in your blog and create the file <em>_extensions/jekyll_ext.rb</em> which should load all the extensions that your blog uses.
+IMPORTANT: Instead of using the <code>jekyll</code> command, you should now use <code>ejekyll</code> instead (which is just a jekyll wrapper that loads your extensions).
 
-You can use my own extensions to help you get started: "my_jekyll_extensions":http://github.com/rfelix/my_jekyll_extensions
+To get you started, take a look at my own <em>_extensions</em> directory: "my_jekyll_extensions":http://github.com/rfelix/my_jekyll_extensions
