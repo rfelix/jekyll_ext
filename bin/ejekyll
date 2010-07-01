@@ -7,7 +7,22 @@ require 'jekyll'
 
 require File.join(File.dirname(__FILE__), '..', 'lib', 'aop.rb')
 
+module Kernel
+  # From http://mentalized.net/journal/2010/04/02/suppress_warnings_from_ruby/
+  def suppress_warnings
+    original_verbosity = $VERBOSE
+    $VERBOSE = nil
+    result = yield
+    $VERBOSE = original_verbosity
+    return result
+  end
+end
+
 module Jekyll
+  # For jekyll versions above 0.6.2 (inclusive)
+  if const_defined? :VERSION
+    suppress_warnings { VERSION = VERSION + " (Extended)" }
+  end
 
   class << self
     alias_method :configuration_without_extensions, :configuration
@@ -21,9 +36,12 @@ module Jekyll
     end
     alias_method :configuration, :configuration_with_extensions 
     
-    alias_method :original_version, :version
-    def version
-      original_version + " (Extended)"
+    # For jekyll versions below 0.6.2 (exclusive)
+    if method_defined? :version
+      alias_method :original_version, :version
+      def version
+        original_version + " (Extended)"
+      end
     end
     
   end
