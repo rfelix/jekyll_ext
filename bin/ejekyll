@@ -4,6 +4,7 @@
 
 require 'rubygems'
 require 'jekyll'
+require 'ftools'
 
 require File.join(File.dirname(__FILE__), '..', 'lib', 'aop.rb')
 
@@ -48,5 +49,5 @@ module Jekyll
 
 end
 
-original_jekyll = ENV['PATH'].split(':').collect { |d| "#{d}/jekyll" }.find{ |p| File.exists?(p) }
+original_jekyll = ENV['PATH'].split(File::PATH_SEPARATOR).collect { |d| "#{d}/jekyll" }.find{ |p| File.exists?(p) }
 load original_jekyll
