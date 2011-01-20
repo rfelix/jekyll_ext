@@ -4,7 +4,6 @@
 
 require 'rubygems'
 require 'jekyll'
-require 'ftools'
 
 require File.join(File.dirname(__FILE__), '..', 'lib', 'aop.rb')
 
@@ -28,15 +27,15 @@ module Jekyll
   class << self
     alias_method :configuration_without_extensions, :configuration
     def configuration_with_extensions(options)
-      options = configuration_without_extensions(options)      
+      options = configuration_without_extensions(options)
       Dir[File.join(options['source'], "_extensions", "*.rb"), File.join(options['source'], "_extensions", "*", "*.rb")].each do |f|
         puts "Loading Extension: #{File.basename(f)}"
         load f
       end
       options
     end
-    alias_method :configuration, :configuration_with_extensions 
-    
+    alias_method :configuration, :configuration_with_extensions
+
     # For jekyll versions below 0.6.2 (exclusive)
     if method_defined? :version
       alias_method :original_version, :version
@@ -44,7 +43,7 @@ module Jekyll
         original_version + " (Extended)"
       end
     end
-    
+
   end
 
 end
