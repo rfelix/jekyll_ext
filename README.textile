@@ -1,6 +1,6 @@
 h1. jekyll_ext
 
-<em>jekyll_ext</em> allows you to extend the Jekyll static blog generator without forking and modifying it's codebase.
+<em>jekyll_ext</em> allows you to extend the Jekyll static blog generator without forking and modifying its codebase.
 With this code, not only do your extensions live in your blog directory, but they can also be shared and reutilized.
 
 More information can be found here: "Jekyll Extensions -= Pain":http://rfelix.com/2010/01/19/jekyll-extensions-minus-equal-pain/
@@ -13,4 +13,4 @@ Now you just need to create the directory <em>_extensions</em> in your blog wher
 
 IMPORTANT: Instead of using the <code>jekyll</code> command, you should now use <code>ejekyll</code> instead (which is just a jekyll wrapper that loads your extensions).
 
-To get you started, take a look at my own <em>_extensions</em> directory: "my_jekyll_extensions":http://github.com/rfelix/my_jekyll_extensions
+To get you started, take a look at "my own extensions directory":http://github.com/rfelix/my_jekyll_extensions.
